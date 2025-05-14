@@ -12,6 +12,7 @@ public class RaycastExample : MonoBehaviour
     public GameObject Plate;
     public GameObject Lighter;
     public GameObject Fire;
+    public GameObject Box;
     private void Start()
     {
         anim = Grinder.GetComponent<Animator>();
@@ -49,6 +50,11 @@ public class RaycastExample : MonoBehaviour
                     anim = Lighter.GetComponent<Animator>();
                     anim.SetTrigger("Opened");
                     Fire.SetActive(true); 
+                }
+                if (hit.collider.name == "Box")
+                {
+                    anim = Box.GetComponent<Animator>();
+                    anim.SetTrigger("Active");
                 }
             }
 
