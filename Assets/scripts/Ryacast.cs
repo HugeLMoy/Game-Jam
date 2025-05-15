@@ -16,6 +16,9 @@ public class RaycastExample : MonoBehaviour
     public GameObject Box;
     public GameObject Smoke;
     public GameObject SmokeUp;
+    public GameObject RadioButton1;
+    public GameObject RadioButton2;
+    public GameObject RadioButton3;
 
     private void Start()
     {
@@ -58,6 +61,21 @@ public class RaycastExample : MonoBehaviour
                 if (hit.collider.name == "Box")
                 {
                     anim = Box.GetComponent<Animator>();
+                    anim.SetTrigger("Active");
+                }
+                if (hit.collider.name == "RadioButton1")
+                {
+                    anim = RadioButton1.GetComponent<Animator>();
+                    anim.SetTrigger("Active");
+                }
+                if (hit.collider.name == "RadioButton2")
+                {
+                    anim = RadioButton2.GetComponent<Animator>();
+                    anim.SetTrigger("Active");
+                }
+                if (hit.collider.name == "RadioButton3")
+                {
+                    anim = RadioButton3.GetComponent<Animator>();
                     anim.SetTrigger("Active");
                 }
                 if (hit.collider.name == "Lighter")
