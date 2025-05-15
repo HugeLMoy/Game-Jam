@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RaycastExample : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class RaycastExample : MonoBehaviour
         SmokeUp.SetActive(false);
     }
 
+    IEnumerator Timer() 
+    {
+        yield return new WaitForSeconds(5);
+    }
     void Update()
     {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -68,6 +73,8 @@ public class RaycastExample : MonoBehaviour
                 if (hit.collider.name == "Lighter")
                     {
                         Smoke.SetActive(true);
+                        StartCoroutine(Timer());
+                        SceneManager.LoadSceneAsync(2);
                     }
 
             }
