@@ -13,10 +13,15 @@ public class RaycastExample : MonoBehaviour
     public GameObject Lighter;
     public GameObject Fire;
     public GameObject Box;
+    public GameObject Smoke;
+    public GameObject SmokeUp;
+
     private void Start()
     {
         anim = Grinder.GetComponent<Animator>();
         Fire.SetActive(false);
+        Smoke.SetActive(false);
+        SmokeUp.SetActive(false);
     }
 
     void Update()
@@ -45,17 +50,26 @@ public class RaycastExample : MonoBehaviour
                     anim.SetTrigger("Active");
 
                 }
-                if (hit.collider.name == "Lighter") 
-                {
-                    anim = Lighter.GetComponent<Animator>();
-                    anim.SetTrigger("Opened");
-                    Fire.SetActive(true); 
-                }
                 if (hit.collider.name == "Box")
                 {
                     anim = Box.GetComponent<Animator>();
                     anim.SetTrigger("Active");
                 }
+                if (hit.collider.name == "Lighter")
+                {
+                    anim = Lighter.GetComponent<Animator>();
+                    anim.SetTrigger("Opened");
+                    Fire.SetActive(true);
+                    SmokeUp.SetActive(true);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (hit.collider.name == "Lighter")
+                    {
+                        Smoke.SetActive(true);
+                    }
+
             }
 
         }
